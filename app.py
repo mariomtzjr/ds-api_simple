@@ -32,5 +32,11 @@ def getProduct(product_name):
         return jsonify({"product": productsFound[0]})
     return jsonify({"message": "Product not found"})
 
+
+# Ruta para crear datos
+@app.route('/products', methods=['POST'])
+def addProduct():
+    return jsonify({"message": "Recibido"})
+
 if __name__ == '__main__':
     app.run(debug=True, port=9091)  # Inicialización de la aplicación
