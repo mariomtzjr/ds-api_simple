@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from products import products
 
 app = Flask(__name__)  # aplicación de Flask
@@ -36,6 +36,8 @@ def getProduct(product_name):
 # Ruta para crear datos
 @app.route('/products', methods=['POST'])
 def addProduct():
+    # Visualización de datos enviados por cliente
+    print(request.json)
     return jsonify({"message": "Recibido"})
 
 if __name__ == '__main__':
