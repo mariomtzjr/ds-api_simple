@@ -36,9 +36,13 @@ def getProduct(product_name):
 # Ruta para crear datos
 @app.route('/products', methods=['POST'])
 def addProduct():
-    # Visualización de datos enviados por cliente
-    print(request.json)
-    return jsonify({"message": "Recibido"})
+    new_product = {
+        "name": request.json["name"],
+        "price": request.json["price"],
+        "quantity": request.json["quantity"]
+    }
+    products.append(new_product)
+    return jsonify({"message": "Product Added Successfully", "products": products})
 
 if __name__ == '__main__':
     app.run(debug=True, port=9091)  # Inicialización de la aplicación
